@@ -1,7 +1,7 @@
 # Gesture-Control-Volume-Control
 ## Hand Volume Control - Python Project
 
-**Control volume with hand gestures!** ✋ This Python project utilizes MediaPipe to track your hand and adjust system volume based on finger distance. A volume bar and indicator provide real-time feedback. (348 characters)
+**Control volume with hand gestures!** ✋ This Python project utilizes MediaPipe to track your hand and adjust system volume based on finger distance. A volume bar and indicator provide real-time feedback.
 
 **Features:**
 
