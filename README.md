@@ -7,7 +7,7 @@
 
 - **Intuitive Control:** Pinch your thumb and index finger to adjust volume smoothly.
 - **Visual Feedback:** A clear volume bar and percentage indicator keep you informed.
-- **Pinky Finger Lock:** Prevents unintentional changes by requiring your pinky to be down.
+- **Ring Finger Lock:** Prevents unintentional changes by requiring your ring finger to be down.
 
 **How it Works:**
 
