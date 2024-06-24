@@ -62,9 +62,11 @@ while True:
     
     if len(lmlists) != 0: 
         # Filter based on size
-        
-        area = ((bbox[2]-bbox[0])*(bbox[3]-bbox[1]))//100
-        
+    
+        xDist = bbox[2]-bbox[0]
+        yDist = bbox[3]-bbox[1]
+        area = (xDist*yDist)//100
+
         if 50 < area < 1500 :
            
            # Find Distance between index and Thumb
@@ -83,13 +85,23 @@ while True:
            fingers = detector.fingersUp()
 
            # If pinky is down set volume
-           if not fingers[3]:
-               volCol = (0,255,0)
-               volume.SetMasterVolumeLevelScalar(volPer/100, None)
-               voll = int(volume.GetMasterVolumeLevelScalar()*100)
-               cv.circle(img,(lineInfo[4],lineInfo[5]),7,volCol,cv.FILLED)
-           else:
-               volCol = (255,0,0)
+           if lmlists[5][2] < lmlists[0][2]:
+               if not fingers[3]:
+                   volCol = (0,255,0)
+                   volume.SetMasterVolumeLevelScalar(volPer/100, None)
+                   voll = int(volume.GetMasterVolumeLevelScalar()*100)
+                   cv.circle(img,(lineInfo[4],lineInfo[5]),7,volCol,cv.FILLED)
+               else:
+                   volCol = (255,0,0)
+
+           elif lmlists[5][2] >= lmlists[0][2]:
+               if  fingers[3]:
+                   volCol = (0,255,0)
+                   volume.SetMasterVolumeLevelScalar(volPer/100, None)
+                   voll = int(volume.GetMasterVolumeLevelScalar()*100)
+                   cv.circle(img,(lineInfo[4],lineInfo[5]),7,volCol,cv.FILLED)
+               else:
+                   volCol = (255,0,0)
                
                
                
@@ -98,7 +110,7 @@ while True:
         cv.rectangle(img,(40,100),(85,400),(255,0,0),3)
         cv.rectangle(img,(40,int(volBar)),(85,400),(255,0,0),cv.FILLED)
         cv.putText(img,f"{str(int(volPer))}%",(40,450),cv.FONT_HERSHEY_SIMPLEX,1,(0,255,0),3)
-        cv.putText(img,f"Volume Set:{str(int(voll))}",(400,50),cv.FONT_HERSHEY_SIMPLEX,1,volCol,3)
+        cv.putText(img,f"Volume Set:{str(int(voll))}",(350,50),cv.FONT_HERSHEY_SIMPLEX,1,volCol,3)
 
 
 
